@@ -1,0 +1,21 @@
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+
+    browser ->> server: Get https://studies.cs.helsinki.fi/exampleapp/spa
+    server -->> browser: html document
+
+    browser ->> server: Get https://studies.cs.helsinki.fi/exampleapp/main.css
+    server -->> browser: CSS File
+
+    browser ->> server: Get https://studies.cs.helsinki.fi/exampleapp/spa.js
+    server -->> browser: JavaScript File
+
+    browser ->> server: Get https://studies.cs.helsinki.fi/exampleapp/data.json
+    server -->> browser: */* 
+
+    
+
+```

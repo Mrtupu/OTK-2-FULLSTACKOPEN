@@ -1,0 +1,30 @@
+```mermaid
+  sequenceDiagram
+    participant browser
+    participant server
+
+      browser ->> server: post https://studies.cs.helsinki.fi/exampleapp/new_note
+      activate server
+      deactivate server
+      
+      browser ->> server: Get https://studies.cs.helsinki.fi/exampleapp/notes
+      activate server
+      server -->> browser: Html Document
+      deactivate server
+
+      browser ->> server: Get https://studies.cs.helsinki.fi/exampleapp/main.css
+      activate server
+      server -->> browser: CSS File
+      deactivate server
+
+      browser ->> server: get https://studies.cs.helsinki.fi/exampleapp/main.js
+      activate server
+      server -->> browser: JavaScript File
+      deactivate server
+
+      browser ->> server: get https://studies.cs.helsinki.fi/exampleapp/data.json
+      activate server
+      server -->> browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+      deactivate server
+
+```
