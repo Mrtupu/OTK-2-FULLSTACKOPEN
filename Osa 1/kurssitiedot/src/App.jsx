@@ -2,21 +2,43 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
-const Part = ({props}) => {
+const Header = (props) => {
   return (
     <div>
-      <li>{props.Content}</li>
+      <h1> {props.header} </h1>
     </div>
   )
 }
 
 const Content = (props) => {
+  const {content} = props
   return (
     <div>
-      <h1>{props.course.name}</h1>
-      <p>{props.course.parts[0].name} {props.course.parts[0].exercises}</p>
-      <p>{props.course.parts[1].name} {props.course.parts[1].exercises}</p>
-      <p>{props.course.parts[2].name} {props.course.parts[2].exercises}</p>
+      <ul>
+        {content.map(part => 
+        <Part key = {part.id} part = {part}/>
+         )}
+      </ul>
+    </div>
+  )
+}
+
+const Part = ({props}) => {
+  return (
+    <div>
+      <ul>
+        <li> {props} </li>
+      </ul>
+    </div>
+  )
+}
+
+const Course = (props) => {
+  const {course} = props
+  return (
+    <div>
+      <Header header = {course.name}/>
+      <Content content = {course.parts}/>
     </div>
   )
 }
@@ -27,7 +49,7 @@ const App = () => {
     id: 1,
     parts: [
       {
-       name: 'Fundimentals of React',
+        name: 'Fundimentals of React',
         exercises: 10,
         id: 1
       },
@@ -46,7 +68,7 @@ const App = () => {
 
   return (
     <div>
-      <Content course = {course} />
+      <Course course = {course} />
     </div>
   )
 }
