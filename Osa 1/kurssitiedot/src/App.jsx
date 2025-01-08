@@ -10,27 +10,34 @@ const Header = (props) => {
   )
 }
 
-const Content = (props) => {
-  const {content} = props
+const Content = ({parts}) => {
+  const allexercises = 0
   return (
     <div>
-      <ul>
-        {content.map(part => 
-        <Part key = {part.id} part = {part}/>
-         )}
-      </ul>
+        {parts.map(part => 
+        <Part key = {part.id} name = {part.name} exercises={part.exercises}/>
+        )}
     </div>
   )
 }
 
-const Part = ({props}) => {
+const Part = ({name, exercises}) => {
   return (
-    <div>
-      <ul>
-        <li> {props} </li>
-      </ul>
-    </div>
+    <p>{name} {exercises}</p>
   )
+}
+
+const Total = ({parts}) => {
+const initialvalue = 0
+const exercises = parts.map(exercises => exercises.exercises)
+const total = exercises.reduce((accumulator, currentvalue) => accumulator + currentvalue, initialvalue,
+);
+console.log(total)
+return (
+  <div>
+    <p>total of {total} exercises</p>
+  </div>
+)
 }
 
 const Course = (props) => {
@@ -38,7 +45,8 @@ const Course = (props) => {
   return (
     <div>
       <Header header = {course.name}/>
-      <Content content = {course.parts}/>
+      <Content parts = {course.parts}/>
+      <Total parts={course.parts}/>
     </div>
   )
 }
@@ -62,6 +70,11 @@ const App = () => {
         name: 'State of a component',
         exercises: 14,
         id: 3
+      },
+      {
+        name: 'status',
+        exercises: 14,
+        id: 4
       }
     ]
   }
