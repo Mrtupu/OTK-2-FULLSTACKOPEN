@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://Localhost:3001/persons'
+const baseUrl = 'https://okt-2-fso-osa-3.onrender.com/api/persons'
 
 const getAll = () => {
     const request = axios.get(baseUrl)
@@ -19,3 +19,4 @@ const deletePerson = (id) => {
 }
 
 export default {getAll, create, update, deletePerson}
+

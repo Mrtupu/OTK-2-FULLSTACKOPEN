@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import PersonService from './services/persons'
 import Person from './components/Person'
-import Notification from './components/Notification'
+import Notification from './components/Notification' 
+
 
 
 const App = () => {
